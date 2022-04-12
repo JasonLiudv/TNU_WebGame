@@ -19,6 +19,13 @@ namespace Jason
             }
         }
 
+        private void Start()
+        {
+            Physics2D.IgnoreLayerCollision(3, 6);
+            Physics2D.IgnoreLayerCollision(6, 6);
+            Physics2D.IgnoreLayerCollision(6, 7);
+        }
+
         private void Update()
         {
             SpawnWeapon();
@@ -27,8 +34,14 @@ namespace Jason
         private void SpawnWeapon()
         {
             timer += Time.deltaTime;
-            if (timer>= dataWeapon.interval)
+            if (timer >= dataWeapon.interval)
             {
+                int random = Random.Range(0, dataWeapon.v3SpawnPoint.Length);
+                Vector3 pos = transform.position + dataWeapon.v3SpawnPoint[random];
+                //Quaternion 四位元：紀錄角度資訊類型
+                //Quaternion.identity零度角(0,0,0)
+                GameObject temp = Instantiate(dataWeapon.goWeapon, pos, Quaternion.identity);
+                temp.GetComponent<Rigidbody2D>().AddForce(dataWeapon.v3Direction * dataWeapon.speed);
                 timer = 0;
             }
         }

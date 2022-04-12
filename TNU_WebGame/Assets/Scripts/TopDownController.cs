@@ -10,8 +10,8 @@ namespace Jason
         #region Data
         [SerializeField, Header("移動速度"), Range(0, 100)]
         private float speed = 10.5f;
-        private string parameterRun = "開關跑步";
-        private string parameterDead = "開關死亡";
+        private string parameterRun = "Switch_Walk";
+        private string parameterDead = "Switch_Die";
         private Animator ani;
         private Rigidbody2D rig;
         private float h;
