@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jason
@@ -12,8 +13,10 @@ namespace Jason
         private float speed = 10.5f;
         private string parameterRun = "Switch_Walk";
         private string parameterDead = "Switch_Die";
+        private string parameterAttack = "Switch_Attack";
         private Animator ani;
         private Rigidbody2D rig;
+        private WeaponSystem weaponSystem;
         private float h;
         private float v;
         #endregion
@@ -21,9 +24,9 @@ namespace Jason
         #region Event
         private void Awake()
         {
-            //print("Awake~");
             ani = GetComponent<Animator>();
             rig = GetComponent<Rigidbody2D>();
+            weaponSystem = GetComponent<WeaponSystem>();
         }
 
         private void Update()
@@ -50,6 +53,11 @@ namespace Jason
             ani.SetBool(parameterRun, h != 0 || v != 0);
 
             transform.eulerAngles = new Vector3(0, h >= 0 ? 0 : 180, 0);
+        }
+
+        public void Attack()
+        {
+            ani.Play("Attack");
         }
         #endregion
     }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace Jason
 {
@@ -7,6 +9,15 @@ namespace Jason
         [SerializeField, Header("武器資料")]
         private DataWeapon dataWeapon;
         private float timer;
+
+        //[System.Serializable]
+        //public class weapon
+        //{
+        //    public KeyCode number;
+        //    public DataWeapon dataWeapon;
+        //}
+        public List<DataWeapon> weaponList = new List<DataWeapon>();
+        public WeaponUIController weaponUIController;
 
         //作用：在編輯器內輔助用 執行不顯示
         private void OnDrawGizmos()
@@ -29,6 +40,7 @@ namespace Jason
         private void Update()
         {
             SpawnWeapon();
+            SwitchWeapon();
         }
 
         private void SpawnWeapon()
@@ -36,6 +48,7 @@ namespace Jason
             timer += Time.deltaTime;
             if (timer >= dataWeapon.interval)
             {
+                GetComponent<TopDownController>().Attack();
                 int random = Random.Range(0, dataWeapon.v3SpawnPoint.Length);
                 Vector3 pos = transform.position + dataWeapon.v3SpawnPoint[random];
                 //Quaternion 四位元：紀錄角度資訊類型
@@ -44,6 +57,25 @@ namespace Jason
                 temp.GetComponent<Rigidbody2D>().AddForce(dataWeapon.v3Direction * dataWeapon.speed);
                 timer = 0;
             }
+        }
+
+        public void SwitchWeapon()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                dataWeapon = weaponList[0];
+                weaponUIController.SelectIcon(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                dataWeapon = weaponList[1];
+                weaponUIController.SelectIcon(1);
+            }
+        }
+
+        public void SwitchWeapon(DataWeapon weapon)
+        {
+            dataWeapon = weapon;
         }
     }
 }

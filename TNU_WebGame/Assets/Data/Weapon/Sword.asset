@@ -22,4 +22,4 @@ MonoBehaviour:
   - {x: 0, y: 0.4, z: 0}
   - {x: 0.4, y: 0, z: 0}
   goWeapon: {fileID: 5951423879035964093, guid: c129ed1928ba3974c90f1976879c6435, type: 3}
-  v3Direction: {x: 0, y: 1, z: 0}
+  v3Direction: {x: 0, y: 0.7, z: 0}
