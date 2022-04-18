@@ -16,7 +16,6 @@ namespace Jason
         private string parameterAttack = "Switch_Attack";
         private Animator ani;
         private Rigidbody2D rig;
-        private WeaponSystem weaponSystem;
         private float h;
         private float v;
         #endregion
@@ -26,7 +25,11 @@ namespace Jason
         {
             ani = GetComponent<Animator>();
             rig = GetComponent<Rigidbody2D>();
-            weaponSystem = GetComponent<WeaponSystem>();
+        }
+
+        private void Start()
+        {
+            WeaponSystem.Instance.OnAttack += Attack;
         }
 
         private void Update()

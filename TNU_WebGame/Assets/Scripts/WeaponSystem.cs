@@ -9,15 +9,12 @@ namespace Jason
         [SerializeField, Header("武器資料")]
         private DataWeapon dataWeapon;
         private float timer;
+        private static WeaponSystem instance = new WeaponSystem();
 
-        //[System.Serializable]
-        //public class weapon
-        //{
-        //    public KeyCode number;
-        //    public DataWeapon dataWeapon;
-        //}
+        public static WeaponSystem Instance { get { return instance; } set { } }
         public List<DataWeapon> weaponList = new List<DataWeapon>();
         public WeaponUIController weaponUIController;
+        public System.Action OnAttack;
 
         //作用：在編輯器內輔助用 執行不顯示
         private void OnDrawGizmos()
@@ -48,6 +45,7 @@ namespace Jason
             timer += Time.deltaTime;
             if (timer >= dataWeapon.interval)
             {
+                OnAttack();
                 GetComponent<TopDownController>().Attack();
                 int random = Random.Range(0, dataWeapon.v3SpawnPoint.Length);
                 Vector3 pos = transform.position + dataWeapon.v3SpawnPoint[random];
