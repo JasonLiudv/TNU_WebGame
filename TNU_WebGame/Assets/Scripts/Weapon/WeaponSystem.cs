@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -56,12 +55,9 @@ namespace Jason
                 timer = 0;
 
                 Destroy(temp, destroyWeaponTime);
-            }
-        }
 
-        public void SwitchWeapon(DataWeapon weapon)
-        {
-            dataWeapon = weapon;
+                temp.GetComponent<Weapon>().attack = dataWeapon.attack;
+            }
         }
     }
 }

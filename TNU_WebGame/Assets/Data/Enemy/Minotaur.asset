@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19c30e50db8efc4c86ccebb78f333ea, type: 3}
   m_Name: Minotaur
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   attack: 10
   cd: 3.5
   hp: 100
   expDropProbability: 0.8
   typeExp: 1
+  stopDistance: 1
