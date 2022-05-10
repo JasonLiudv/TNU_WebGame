@@ -11,13 +11,16 @@ namespace Jason
         /// ¨ü¨ì¶Ë®`
         /// </summary>
         /// <param name="damage"></param>
-        public void GetHurt(float damage)
+        public virtual void GetHurt(float damage)
         {
+            if (hp <= 0) return;
+
             hp -= damage;
+
             if (hp <= 0) Dead();
         }
 
-        public void Dead()
+        protected virtual void Dead()
         {
             hp = 0;
         }

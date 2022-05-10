@@ -10,8 +10,8 @@ namespace Jason
         [SerializeField, Header("武器刪除時間"), Range(2, 10)]
         private float destroyWeaponTime = 3.5f;
 
-        private float timer;
         private static WeaponSystem instance = new WeaponSystem();
+        private float timer;
 
         public static WeaponSystem Instance { get { return instance; } set { } }
         public System.Action OnAttack;
