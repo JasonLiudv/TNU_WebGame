@@ -8,6 +8,8 @@ namespace Jason
         private DataEnemy data;
         [SerializeField, Header("畫布受傷數值")]
         private GameObject goCanvasHurt;
+        [SerializeField, Header("經驗值道具")]
+        private GameObject goExp;
 
         private string parameterDead = "Trigger_Death";
         private Animator ani;
@@ -39,6 +41,18 @@ namespace Jason
             enemySystem.enabled = false;
             GetComponent<Collider2D>().enabled = false;
             Destroy(gameObject, 2);
+            DropExp();
+        }
+
+        private void DropExp()
+        {
+            float randwom=Random.value;
+
+            if (randwom <= data.expDropProbability)
+            {
+                GameObject tempExp=Instantiate(goExp, transform.position, Quaternion.identity);
+                tempExp.AddComponent<Exp>().typeExp = data.typeExp;
+            }
         }
     }
 }

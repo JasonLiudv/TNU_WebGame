@@ -134,6 +134,7 @@ MonoBehaviour:
   hp: 50
   data: {fileID: 11400000, guid: e56f7dd66b5f3754b9d01d6cebc48bf1, type: 2}
   goCanvasHurt: {fileID: 3696799077587713859, guid: 8c2946cea1030574996df459e1aa35a1, type: 3}
+  goExp: {fileID: 5954381059773863665, guid: c6746c65c153bc6489987c1c3e42b30f, type: 3}
 --- !u!58 &6029822116060078882
 CircleCollider2D:
   m_ObjectHideFlags: 0
