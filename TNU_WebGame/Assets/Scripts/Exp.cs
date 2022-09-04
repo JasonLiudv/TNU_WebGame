@@ -12,9 +12,9 @@ namespace Jason
         private LayerMask layerPlayer = 1 << 3;
         private float destroyDistance = 0.5f;
 
-        private Color colorSmall = new Color(0.5f, 0.3f, 0.8f);
-        private Color colorMiddle = new Color(0.2f, 0.8f, 0.1f);
-        private Color colorBig = new Color(0.8f, 0.3f, 0.2f);
+        private Color colorSmall = Color.blue;
+        private Color colorMiddle = Color.gray;
+        private Color colorBig = Color.red;
 
         private Transform traPlayer;
         private SpriteRenderer spr;
